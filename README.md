@@ -1,6 +1,6 @@
 <h1 align="center">Sorty 〽️</h1>
 <p>
-  <a href="https://github.com/xelvoz/sorty/LICENSE.md" target="_blank">
+  <a href="https://github.com/xelvoz/Sorty/LICENSE.md" target="_blank">
     <img alt="License: GPLv3" src="https://img.shields.io/badge/License-GPLv3-yellow.svg" />
   </a>
   <a href="https://twitter.com/heiligeslicht" target="_blank">
@@ -35,7 +35,7 @@ flutter run
 
 ## 🤝 Contributing
 
-Contributions, issues and feature requests are welcome!<br />Feel free to check [issues page](https://github.com/xelvoz/sorty/issues/). 
+Contributions, issues and feature requests are welcome!<br />Feel free to check [issues page](https://github.com/xelvoz/Sorty/issues/). 
 
 ## Show your support
 
