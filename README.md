@@ -10,6 +10,8 @@
 
 > A Sorting Algorithms Visualizer 
 
+## THIS PROJECT IS A <u>WORK IN PROGRESS</u>
+
 ## Install
 
 ```sh
