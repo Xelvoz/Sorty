@@ -44,4 +44,4 @@ Give a ⭐️ if this project helped you!
 ## 📝 License
 
 Copyright © 2020 [Mohamed-Amine ROMDHANE](https://github.com/xelvoz).<br />
-This project is [GPLv3](https://github.com/xelvoz/sorty/LICENSE.md) licensed.
+This project is [GPLv3](https://github.com/Xelvoz/Sorty/blob/master/LICENSE.md) licensed.
