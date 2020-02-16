@@ -1,29 +1,35 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:sorty/sorting/abstract_sorter.dart';
 import 'package:sorty/visualizers/abstract_visualizer.dart';
 
 class BarsVisualizer extends AbstractVisualizer {
-  final AbstractSorter sorter;
+  final List<int> array;
+  final List<int> highlights;
+  final List<int> specialHighlights;
   final Paint _paint = Paint();
 
   double _horizontalOffset;
   double barThinkness;
 
-  BarsVisualizer({this.sorter}) : super(sorter: sorter);
+  BarsVisualizer({
+    this.array,
+    this.highlights,
+    this.specialHighlights,
+  }) : super(array: array, highlights: highlights, specialHighlights: specialHighlights);
 
   @override
   void drawNumber(Canvas canvas, Size size, int number) {
-    barThinkness = barThinkness ?? (sorter.arrayGenerator.array.length / size.width) - 1;
-    _horizontalOffset = _horizontalOffset ?? barThinkness / 2;
-
+    barThinkness = barThinkness ?? (size.width / array.length);
+    _horizontalOffset = _horizontalOffset ?? (barThinkness / 2);
     canvas.drawLine(
-      Offset(_horizontalOffset, size.height),
-      Offset(_horizontalOffset, (sorter.arrayGenerator.array.length / size.height) * number),
+      Offset(size.width - _horizontalOffset, size.height),
+      Offset(size.width - _horizontalOffset, (size.height / array.length) * (number - 1)),
       _paint
         ..strokeWidth = barThinkness
-        ..color = Colors.grey,
+        ..color = (highlights.contains(number)
+            ? Colors.red[300]
+            : specialHighlights.contains(number) ? Colors.blue : Colors.grey),
     );
     _horizontalOffset += barThinkness;
   }

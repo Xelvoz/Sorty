@@ -1,3 +1,5 @@
+import 'dart:async';
+
 class ArrayGenerator {
   int elements;
   List<int> array;
@@ -31,5 +33,11 @@ class ArrayGenerator {
 
   void reset() {
     array = List.from(initialArray);
+  }
+
+  void swap(int i, int j) {
+    int tmp = array[i];
+    array[i] = array[j];
+    array[j] = tmp;
   }
 }

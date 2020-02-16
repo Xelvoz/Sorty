@@ -1,16 +1,17 @@
 import 'package:flutter/cupertino.dart';
-import 'package:sorty/sorting/abstract_sorter.dart';
 
 abstract class AbstractVisualizer extends CustomPainter {
-  final AbstractSorter sorter;
+  final List<int> array;
+  final List<int> highlights;
+  final List<int> specialHighlights;
 
-  AbstractVisualizer({this.sorter});
+  AbstractVisualizer({this.array, this.highlights, this.specialHighlights});
 
   void drawNumber(Canvas canvas, Size size, int number);
 
   @override
   void paint(Canvas canvas, Size size) {
-    for (int elem in sorter.arrayGenerator.array) {
+    for (int elem in array) {
       drawNumber(canvas, size, elem);
     }
   }
