@@ -12,6 +12,12 @@
 
 ## THIS PROJECT IS A <u>WORK IN PROGRESS</u>
 
+## Showcase
+
+|Quicksort|
+|:---:|
+|![](https://i.imgur.com/VRa4NP2.gif)|
+
 ## Install
 
 ```sh
