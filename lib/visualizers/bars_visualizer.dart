@@ -19,7 +19,7 @@ class BarsVisualizer extends AbstractVisualizer {
   }) : super(array: array, highlights: highlights, specialHighlights: specialHighlights);
 
   @override
-  void drawNumber(Canvas canvas, Size size, int number) {
+  void drawNumber(Canvas canvas, Size size, int number, int position) {
     barThinkness = barThinkness ?? (size.width / array.length);
     _horizontalOffset = _horizontalOffset ?? (barThinkness / 2);
     canvas.drawLine(

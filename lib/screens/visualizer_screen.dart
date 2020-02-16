@@ -4,7 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:sorty/sorting/abstract_sorter.dart';
 import 'package:sorty/sorting/algorithms/quicksort.dart';
 import 'package:sorty/sorting/array_generator.dart';
+import 'package:sorty/visualizers/abstract_visualizer.dart';
 import 'package:sorty/visualizers/bars_visualizer.dart';
+import 'package:sorty/visualizers/rbgcircle_visualizer.dart';
+import 'package:sorty/visualizers/spiral_visualizer.dart';
 
 class VisualizerScreen extends StatefulWidget {
   @override
@@ -38,7 +41,7 @@ class _VisualizerScreenState extends State<VisualizerScreen> {
               builder: (context, snapshot) {
                 return RepaintBoundary(
                   child: CustomPaint(
-                    painter: BarsVisualizer(
+                    painter: AbstractVisualizer.spiral(
                       array: snapshot?.data,
                       highlights: _sorter.highlightedNumbers,
                       specialHighlights: _sorter.specialHighlitedNumbers,
@@ -48,7 +51,7 @@ class _VisualizerScreenState extends State<VisualizerScreen> {
               }),
         ),
       ),
-      floatingActionButton: StreamBuilder<Object>(
+      floatingActionButton: StreamBuilder<SortingStatus>(
           initialData: SortingStatus.IDLE,
           stream: _sorter.animationStatus.stream,
           builder: (context, snapshot) {
