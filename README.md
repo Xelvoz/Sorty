@@ -14,9 +14,9 @@
 
 ## Showcase
 
-|Quicksort|
-|:---:|
-|![](https://i.imgur.com/VRa4NP2.gif)|
+|Quicksort (Bars Visualizer)|Quicksort (RGB Circle Visualizer)|
+|:---:|:---:|
+|![](https://i.imgur.com/VRa4NP2.gif)|![](https://i.imgur.com/vPMLmwh.gif)|
 
 ## Install
 
