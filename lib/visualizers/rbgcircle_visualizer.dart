@@ -9,6 +9,8 @@ class RGBCircleVisualizer extends AbstractVisualizer {
   final List<int> highlights;
   final List<int> specialHighlights;
   final Paint _paint = Paint();
+  double thetaOffset = 0;
+  double heightOffset = 0;
 
   RGBCircleVisualizer({
     this.array,
@@ -20,24 +22,34 @@ class RGBCircleVisualizer extends AbstractVisualizer {
   void drawNumber(Canvas canvas, Size size, int number, int position) {
     double radius = (size.height - 20) / 2;
     Offset origin = Offset(size.width / 2, size.height / 2);
-    double theta = position / array.length;
-    double thetaPrevious = (position == array.length - 1) ? 0 : (position + 1) / array.length;
-    double x = origin.dx + radius * cos(2 * pi * theta);
-    double y = origin.dy + radius * sin(2 * pi * theta);
-    double xPrevious = origin.dx + radius * cos(2 * pi * thetaPrevious);
-    double yPrevious = origin.dy + radius * sin(2 * pi * thetaPrevious);
+    double theta = 2 * pi / array.length;
 
-    canvas.drawPath(
-      Path()
-        ..addPolygon([
-          origin,
-          Offset(x, y),
-          Offset(xPrevious, yPrevious),
-        ], true),
+    double singleRectWidth = 50;
+    double singleRectHeight = size.height / array.length;
+
+    canvas.drawRect(
+      Rect.fromPoints(
+        Offset(0, heightOffset),
+        Offset(singleRectWidth, heightOffset + singleRectHeight),
+      ),
       _paint
         ..color = HSVColor.fromAHSV(1, (360 / array.length) * number, 1, 1).toColor()
-        ..strokeWidth = 10
+        ..strokeWidth = 1
         ..style = PaintingStyle.fill,
     );
+
+    canvas.drawArc(
+      Rect.fromCircle(center: origin, radius: radius),
+      thetaOffset,
+      theta,
+      true,
+      _paint
+        ..color = HSVColor.fromAHSV(1, (360 / array.length) * number, 1, 1).toColor()
+        ..strokeWidth = 1
+        ..style = PaintingStyle.fill,
+    );
+
+    thetaOffset += theta;
+    heightOffset += singleRectHeight;
   }
 }

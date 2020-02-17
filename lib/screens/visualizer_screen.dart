@@ -15,7 +15,7 @@ class VisualizerScreen extends StatefulWidget {
 }
 
 class _VisualizerScreenState extends State<VisualizerScreen> {
-  AbstractSorter _sorter = Quicksort(arrayGenerator: ArrayGenerator(100));
+  AbstractSorter _sorter = Quicksort(arrayGenerator: ArrayGenerator(200));
 
   @override
   void initState() {
@@ -33,6 +33,7 @@ class _VisualizerScreenState extends State<VisualizerScreen> {
     return Scaffold(
       body: SafeArea(
         child: Container(
+          color: Color(0xFF333333),
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
           child: StreamBuilder<List<int>>(
@@ -41,7 +42,7 @@ class _VisualizerScreenState extends State<VisualizerScreen> {
               builder: (context, snapshot) {
                 return RepaintBoundary(
                   child: CustomPaint(
-                    painter: AbstractVisualizer.spiral(
+                    painter: AbstractVisualizer.rgbCircle(
                       array: snapshot?.data,
                       highlights: _sorter.highlightedNumbers,
                       specialHighlights: _sorter.specialHighlitedNumbers,
