@@ -11,10 +11,11 @@ class VisualizerScreen extends StatefulWidget {
 }
 
 class _VisualizerScreenState extends State<VisualizerScreen> {
-  AbstractSorter _sorter = Quicksort(arrayGenerator: ArrayGenerator(500));
+  AbstractSorter _sorter;
 
   @override
   void initState() {
+    _sorter = Quicksort(arrayGenerator: ArrayGenerator(200));
     super.initState();
   }
 

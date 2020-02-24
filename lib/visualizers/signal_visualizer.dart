@@ -20,7 +20,8 @@ class SignalVisualizer extends AbstractVisualizer {
     this.highlights,
     this.specialHighlights,
   }) : super(array: array, highlights: highlights, specialHighlights: specialHighlights) {
-    signal = List.from(array).map((i) => sin(3 * i)).toList();
+    // Credits to Lykrast for the pointers on the formula.
+    signal = List.from(array).map((i) => sin(2 * i * pi / array.length + pi)).toList();
   }
 
   @override
@@ -50,7 +51,7 @@ class SignalVisualizer extends AbstractVisualizer {
           _unitWidth * position,
           _halfHeight + _portionHeight * signal[position],
         ),
-      ].toList(),
+      ],
       _paint
         ..strokeWidth = 2
         ..color = Colors.white,
