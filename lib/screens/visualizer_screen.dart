@@ -1,13 +1,9 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:sorty/sorting/abstract_sorter.dart';
 import 'package:sorty/sorting/algorithms/quicksort.dart';
 import 'package:sorty/sorting/array_generator.dart';
 import 'package:sorty/visualizers/abstract_visualizer.dart';
-import 'package:sorty/visualizers/bars_visualizer.dart';
-import 'package:sorty/visualizers/rbgcircle_visualizer.dart';
-import 'package:sorty/visualizers/spiral_visualizer.dart';
+import 'package:sorty/screens/widgets/settings.dart';
 
 class VisualizerScreen extends StatefulWidget {
   @override
@@ -61,6 +57,7 @@ class _VisualizerScreenState extends State<VisualizerScreen> {
                 : Row(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.end,
+                    crossAxisAlignment: CrossAxisAlignment.end,
                     children: <Widget>[
                       FloatingActionButton(
                           mini: true,
@@ -72,7 +69,7 @@ class _VisualizerScreenState extends State<VisualizerScreen> {
                               : () {
                                   _sorter.shuffle();
                                 }),
-                      SizedBox(width: 10),
+                      SizedBox(width: 5),
                       FloatingActionButton(
                         mini: true,
                         backgroundColor: Colors.blueGrey,
@@ -87,6 +84,10 @@ class _VisualizerScreenState extends State<VisualizerScreen> {
                     ],
                   );
           }),
+      drawer: Drawer(
+        elevation: 10,
+        child: Settings(),
+      ),
     );
   }
 }

@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:flutter/animation.dart';
 import 'package:flutter/foundation.dart';
 import 'package:sorty/sorting/array_generator.dart';
 
