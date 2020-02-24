@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:sorty/visualizers/bars_visualizer.dart';
 import 'package:sorty/visualizers/rbgcircle_visualizer.dart';
+import 'package:sorty/visualizers/signal_visualizer.dart';
 import 'package:sorty/visualizers/spiral_visualizer.dart';
 
 abstract class AbstractVisualizer extends CustomPainter {
@@ -38,6 +39,17 @@ abstract class AbstractVisualizer extends CustomPainter {
     specialHighlights,
   }) =>
       SpiralVisualizer(
+        array: array,
+        highlights: highlights,
+        specialHighlights: specialHighlights,
+      );
+
+  factory AbstractVisualizer.signal({
+    array,
+    highlights,
+    specialHighlights,
+  }) =>
+      SignalVisualizer(
         array: array,
         highlights: highlights,
         specialHighlights: specialHighlights,
