@@ -1,8 +1,4 @@
-import 'package:flutter/cupertino.dart';
-import 'package:sorty/visualizers/bars_visualizer.dart';
-import 'package:sorty/visualizers/rbgcircle_visualizer.dart';
-import 'package:sorty/visualizers/signal_visualizer.dart';
-import 'package:sorty/visualizers/spiral_visualizer.dart';
+import 'package:flutter/material.dart';
 
 abstract class AbstractVisualizer extends CustomPainter {
   final List<int> array;
@@ -10,50 +6,6 @@ abstract class AbstractVisualizer extends CustomPainter {
   final List<int> specialHighlights;
 
   AbstractVisualizer({this.array, this.highlights, this.specialHighlights});
-
-  factory AbstractVisualizer.bars({
-    array,
-    highlights,
-    specialHighlights,
-  }) =>
-      BarsVisualizer(
-        array: array,
-        highlights: highlights,
-        specialHighlights: specialHighlights,
-      );
-
-  factory AbstractVisualizer.rgbCircle({
-    array,
-    highlights,
-    specialHighlights,
-  }) =>
-      RGBCircleVisualizer(
-        array: array,
-        highlights: highlights,
-        specialHighlights: specialHighlights,
-      );
-
-  factory AbstractVisualizer.spiral({
-    array,
-    highlights,
-    specialHighlights,
-  }) =>
-      SpiralVisualizer(
-        array: array,
-        highlights: highlights,
-        specialHighlights: specialHighlights,
-      );
-
-  factory AbstractVisualizer.signal({
-    array,
-    highlights,
-    specialHighlights,
-  }) =>
-      SignalVisualizer(
-        array: array,
-        highlights: highlights,
-        specialHighlights: specialHighlights,
-      );
 
   void drawNumber(Canvas canvas, Size size, int number, int position);
 

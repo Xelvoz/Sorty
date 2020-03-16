@@ -28,7 +28,7 @@ class SignalVisualizer extends AbstractVisualizer {
   void drawNumber(Canvas canvas, Size size, int number, int position) {
     _halfHeight = _halfHeight ?? size.height / 2;
     _portionHeight = _portionHeight ?? size.height / 2.5;
-    _unitWidth = _unitWidth ?? (size.width / array.length);
+    _unitWidth = _unitWidth ?? (size.width / (array.length - 1));
     if (position > 0)
       canvas.drawLine(
           Offset(
@@ -40,10 +40,10 @@ class SignalVisualizer extends AbstractVisualizer {
             _halfHeight + _portionHeight * signal[position],
           ),
           _paint
-            ..strokeWidth = 1
+            ..strokeWidth = 3
             ..color = (highlights.contains(number)
                 ? Colors.red[300]
-                : specialHighlights.contains(number) ? Colors.blue : Colors.grey));
+                : specialHighlights.contains(number) ? Colors.blue : Colors.grey.withAlpha(120)));
     canvas.drawPoints(
       PointMode.points,
       [
@@ -53,8 +53,9 @@ class SignalVisualizer extends AbstractVisualizer {
         ),
       ],
       _paint
-        ..strokeWidth = 2
-        ..color = Colors.white,
+        ..strokeWidth = 3
+        ..color = Colors.white
+        ..strokeCap = StrokeCap.round,
     );
   }
 }

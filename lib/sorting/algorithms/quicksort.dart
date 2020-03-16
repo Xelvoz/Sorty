@@ -1,16 +1,21 @@
 import 'package:sorty/sorting/abstract_sorter.dart';
+import 'package:sorty/sorting/array_feed.dart';
 import 'package:sorty/sorting/array_generator.dart';
 
 class Quicksort extends AbstractSorter {
   Quicksort({
     ArrayGenerator arrayGenerator,
-  }) : super(name: "Quicksort", arrayGenerator: arrayGenerator);
+    Duration animationDelay,
+  }) : super(
+          name: "Quicksort",
+          arrayGenerator: arrayGenerator,
+          animationDelay: animationDelay,
+        );
 
   @override
   Future<void> sort() async {
-    animationStatus.add(SortingStatus.INPROGRESS);
-    await _quickSort(0, arrayGenerator.array.length - 1);
-    animationStatus.add(SortingStatus.COMPLETED);
+    await _quickSort(0, array.length - 1);
+    ArrayFeed.addUpdate(ArrayUpdates(array: array));
   }
 
   Future<void> _quickSort(int low, int high) async {
@@ -24,32 +29,48 @@ class Quicksort extends AbstractSorter {
 
   Future<int> partition(int low, int high) async {
     // pivot (Element to be placed at right position)
-    var pivot = arrayGenerator.array[high];
-    specialHighlitedNumbers.add(pivot);
+    var pivot = array[high];
 
     var i = (low - 1); // Index of smaller element
 
     for (int j = low; j <= high - 1; j++) {
       // If current element is smaller than the pivot
-      if (arrayGenerator.array[j] < pivot) {
+      if (array[j] < pivot) {
         i++; // increment index of smaller element
-        highlightedNumbers.add(arrayGenerator.array[i]);
-        highlightedNumbers.add(arrayGenerator.array[j]);
         await Future.delayed(animationDelay, () {
           arrayGenerator.swap(i, j);
-        }).then((_) => addCurrentArrayToStream());
-        highlightedNumbers.clear();
+        }).then(
+          (_) => ArrayFeed.addUpdate(ArrayUpdates(
+            array: array,
+            highlightedNumbers: [
+              array[i],
+              array[j],
+            ],
+            specialHighlitedNumbers: [pivot],
+          )),
+        );
       }
     }
 
-    highlightedNumbers.add(arrayGenerator.array[i + 1]);
-    highlightedNumbers.add(arrayGenerator.array[high]);
-
     await Future.delayed(animationDelay, () {
       arrayGenerator.swap(i + 1, high);
-    }).then((_) => addCurrentArrayToStream());
-    highlightedNumbers.clear();
-    specialHighlitedNumbers.clear();
+    }).then(
+      (_) => ArrayFeed.addUpdate(ArrayUpdates(
+        array: array,
+        highlightedNumbers: [
+          array[i + 1],
+          array[high],
+        ],
+      )),
+    );
     return (i + 1);
+  }
+
+  @override
+  AbstractSorter copyWith({arrayGenerator, animationDelay}) {
+    return Quicksort(
+      animationDelay: animationDelay ?? animationDelay,
+      arrayGenerator: arrayGenerator ?? arrayGenerator,
+    );
   }
 }
