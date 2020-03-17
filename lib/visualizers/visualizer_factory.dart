@@ -9,6 +9,20 @@ enum VisualizerType { Bars, RGBCircle, Spiral, Signal }
 class VisualizerFactory {
   VisualizerFactory._();
 
+  static Function visualizerFunctionFromType(VisualizerType type) {
+    switch (type) {
+      case VisualizerType.RGBCircle:
+        return VisualizerFactory.rgbCircle;
+      case VisualizerType.Spiral:
+        return VisualizerFactory.spiral;
+      case VisualizerType.Signal:
+        return VisualizerFactory.signal;
+      case VisualizerType.Bars:
+      default:
+        return VisualizerFactory.bars;
+    }
+  }
+
   static BarsVisualizer bars({
     array,
     highlights,

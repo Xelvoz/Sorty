@@ -24,20 +24,6 @@ class RGBCircleVisualizer extends AbstractVisualizer {
     Offset origin = Offset(size.width / 2, size.height / 2);
     double theta = 2 * pi / array.length;
 
-    double singleRectWidth = 50;
-    double singleRectHeight = size.height / array.length;
-
-    canvas.drawRect(
-      Rect.fromPoints(
-        Offset(0, heightOffset),
-        Offset(singleRectWidth, heightOffset + singleRectHeight),
-      ),
-      _paint
-        ..color = HSVColor.fromAHSV(1, (360 / array.length) * number, 1, 1).toColor()
-        ..strokeWidth = 1
-        ..style = PaintingStyle.fill,
-    );
-
     canvas.drawArc(
       Rect.fromCircle(center: origin, radius: radius),
       thetaOffset,
@@ -50,6 +36,5 @@ class RGBCircleVisualizer extends AbstractVisualizer {
     );
 
     thetaOffset += theta;
-    heightOffset += singleRectHeight;
   }
 }

@@ -20,6 +20,8 @@ abstract class AbstractSorter {
 
   List<int> get array => arrayGenerator.array;
 
+  List<int> get initialArray => arrayGenerator.initialArray;
+
   Future<void> sort();
 
   void reset() {
