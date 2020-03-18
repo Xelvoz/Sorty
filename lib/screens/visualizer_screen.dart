@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sorty/blocs/sorter/sorter_bloc.dart';
 import 'package:sorty/blocs/visualizer/visualizer_bloc.dart';
+import 'package:sorty/screens/widgets/visualization_paint.dart';
 import 'package:sorty/sorting/array_feed.dart';
 import 'package:sorty/screens/widgets/settings.dart';
 
@@ -20,31 +21,19 @@ class _VisualizerScreenState extends State<VisualizerScreen> {
             color: Color(0xFF333333),
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height,
-            child: StreamBuilder<ArrayUpdates>(
-                initialData: ArrayUpdates(array: sorterState.sorter.initialArray),
-                stream: ArrayFeed.stream,
-                builder: (context, snapshot) {
-                  return BlocBuilder<VisualizerBloc, VisualizerState>(
-                    builder: (_, visualizerState) {
-                      if (visualizerState is VisualizerLoaded)
-                        return RepaintBoundary(
-                          child: CustomPaint(
-                            willChange: true,
-                            isComplex: true,
-                            painter: visualizerState.func(
-                              array: snapshot?.data?.array,
-                              highlights: snapshot?.data?.highlightedNumbers,
-                              specialHighlights: snapshot?.data?.specialHighlitedNumbers,
-                            ),
-                          ),
-                        );
-                      else
-                        return Center(
-                          child: CircularProgressIndicator(),
-                        );
-                    },
+            child: BlocBuilder<VisualizerBloc, VisualizerState>(
+              builder: (_, visualizerState) {
+                if (visualizerState is VisualizerLoaded)
+                  return VisualizationPaint(
+                    initialArray: sorterState.sorter.initialArray,
+                    visualizer: visualizerState.func,
                   );
-                }),
+                else
+                  return Center(
+                    child: CircularProgressIndicator(),
+                  );
+              },
+            ),
           ),
         ),
         floatingActionButton: BlocBuilder<SorterBloc, SorterState>(

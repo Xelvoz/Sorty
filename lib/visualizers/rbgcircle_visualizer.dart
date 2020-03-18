@@ -9,14 +9,15 @@ class RGBCircleVisualizer extends AbstractVisualizer {
   final List<int> highlights;
   final List<int> specialHighlights;
   final Paint _paint = Paint();
-  double thetaOffset = 0;
-  double heightOffset = 0;
+  double thetaOffset;
 
   RGBCircleVisualizer({
     this.array,
     this.highlights,
     this.specialHighlights,
-  }) : super(array: array, highlights: highlights, specialHighlights: specialHighlights);
+  }) : super(array: array, highlights: highlights, specialHighlights: specialHighlights) {
+    thetaOffset = 0;
+  }
 
   @override
   void drawNumber(Canvas canvas, Size size, int number, int position) {
@@ -31,7 +32,8 @@ class RGBCircleVisualizer extends AbstractVisualizer {
       true,
       _paint
         ..color = HSVColor.fromAHSV(1, (360 / array.length) * number, 1, 1).toColor()
-        ..strokeWidth = 1
+        ..strokeWidth = 0.5
+        ..strokeJoin = StrokeJoin.round
         ..style = PaintingStyle.fill,
     );
 

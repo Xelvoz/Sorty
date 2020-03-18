@@ -40,3 +40,12 @@ class ChangeAnimationDelay extends SorterEvent {
   @override
   List<Object> get props => [animationDelay];
 }
+
+class ChangeAlgorithm extends SorterEvent {
+  final Algorithm algorithm;
+
+  ChangeAlgorithm(this.algorithm);
+
+  @override
+  List<Object> get props => [algorithm];
+}

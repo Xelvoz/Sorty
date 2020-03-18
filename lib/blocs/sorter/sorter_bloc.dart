@@ -4,6 +4,8 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:sorty/sorting/abstract_sorter.dart';
+import 'package:sorty/sorting/algorithms/algorithm_factory.dart';
+import 'package:sorty/sorting/algorithms/mergesort.dart';
 import 'package:sorty/sorting/algorithms/quicksort.dart';
 import 'package:sorty/sorting/array_generator.dart';
 
@@ -11,9 +13,9 @@ part 'sorter_event.dart';
 part 'sorter_state.dart';
 
 class SorterBloc extends Bloc<SorterEvent, SorterState> {
-  static AbstractSorter DEFAULT_SORTER = Quicksort(arrayGenerator: ArrayGenerator(50));
-
+  static AbstractSorter DEFAULT_SORTER = MergeSort(arrayGenerator: ArrayGenerator(50));
   AbstractSorter sorter = DEFAULT_SORTER;
+  Algorithm algorithm = Algorithm.Mergesort;
 
   @override
   SorterState get initialState => SortingIdle(DEFAULT_SORTER);
@@ -43,6 +45,16 @@ class SorterBloc extends Bloc<SorterEvent, SorterState> {
 
     if (event is ChangeAnimationDelay) {
       sorter = sorter.copyWith(animationDelay: event.animationDelay);
+      yield SorterLoaded(sorter);
+    }
+
+    if (event is ChangeAlgorithm) {
+      var newSorter = AlgorithmFactory.visualizerFunctionFromType(event.algorithm);
+      algorithm = event.algorithm;
+      sorter = newSorter.copyWith(
+        animationDelay: sorter.animationDelay.inMilliseconds,
+        arrayGenerator: sorter.arrayGenerator,
+      );
       yield SorterLoaded(sorter);
     }
 

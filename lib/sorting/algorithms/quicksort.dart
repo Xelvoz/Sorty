@@ -68,7 +68,7 @@ class Quicksort extends AbstractSorter {
 
   @override
   AbstractSorter copyWith({arrayGenerator, animationDelay}) {
-    var _aniDelay = animationDelay ?? this.animationDelay.inMilliseconds;
+    var _aniDelay = animationDelay ?? this.animationDelay;
     return Quicksort(
       animationDelay: Duration(milliseconds: _aniDelay),
       arrayGenerator: arrayGenerator ?? this.arrayGenerator,

@@ -13,7 +13,7 @@ abstract class AbstractSorter {
     @required this.arrayGenerator,
     animationDelay,
   }) {
-    this.animationDelay = animationDelay ?? const Duration(milliseconds: 50);
+    this.animationDelay = animationDelay ?? const Duration(milliseconds: 25);
   }
 
   AbstractSorter copyWith({arrayGenerator, animationDelay});
