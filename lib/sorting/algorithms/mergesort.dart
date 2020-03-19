@@ -7,7 +7,7 @@ class MergeSort extends AbstractSorter {
     ArrayGenerator arrayGenerator,
     Duration animationDelay,
   }) : super(
-          name: "MergeSort",
+          name: "Mergesort",
           arrayGenerator: arrayGenerator,
           animationDelay: animationDelay,
         );

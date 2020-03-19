@@ -22,9 +22,8 @@ class SpiralVisualizer extends AbstractVisualizer {
     double numberRadius = (radius / array.length) * number;
     Offset origin = Offset(size.width / 2, size.height / 2);
     double theta = position / array.length;
-    int coef = log(array.length) ~/ log(2);
-    double x = origin.dx + numberRadius * cos(2 * coef * pi * theta);
-    double y = origin.dy + numberRadius * sin(2 * coef * pi * theta);
+    double x = origin.dx + numberRadius * cos(2 * 1.618 * pi * theta);
+    double y = origin.dy + numberRadius * sin(2 * 1.618 * pi * theta);
     canvas.drawPoints(
         PointMode.points,
         [Offset(x, y)],
@@ -34,7 +33,7 @@ class SpiralVisualizer extends AbstractVisualizer {
               : specialHighlights.contains(number)
                   ? Colors.blue.withAlpha(180)
                   : Colors.grey.withAlpha(180))
-          ..strokeWidth = 10
+          ..strokeWidth = 5
           ..style = PaintingStyle.stroke
           ..strokeJoin = StrokeJoin.round
           ..strokeCap = StrokeCap.round);

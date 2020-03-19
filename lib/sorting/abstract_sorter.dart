@@ -26,6 +26,7 @@ abstract class AbstractSorter {
 
   void reset() {
     arrayGenerator.reset();
+    ArrayFeed.addUpdate(ArrayUpdates(array: List.from(array)));
   }
 
   void shuffle() {

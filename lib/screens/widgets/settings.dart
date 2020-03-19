@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:sorty/blocs/sorter/sorter_bloc.dart';
-import 'package:sorty/blocs/visualizer/visualizer_bloc.dart';
 import 'package:sorty/screens/widgets/settings/algorithm_settings.dart';
 import 'package:sorty/screens/widgets/settings/animationdelay_settings.dart';
 import 'package:sorty/screens/widgets/settings/elements_settings.dart';

@@ -9,6 +9,11 @@ class StartSort extends SorterEvent {
   List<Object> get props => null;
 }
 
+class Reset extends SorterEvent {
+  @override
+  List<Object> get props => null;
+}
+
 class StartShuffle extends SorterEvent {
   @override
   List<Object> get props => null;

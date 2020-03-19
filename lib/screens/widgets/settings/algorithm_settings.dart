@@ -40,7 +40,7 @@ class _AlgorithmSettingsState extends State<AlgorithmSettings> {
                   .map((vt) => DropdownMenuItem(
                         value: vt.index,
                         child: Text(
-                          "${vt.toString().split(".")[1]}",
+                          "${AlgorithmFactory.visualizerFunctionFromType(Algorithm.values[vt.index]).name}",
                           style: TextStyle(
                             color: Colors.white70,
                             fontWeight: FontWeight.bold,

@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:sorty/sorting/abstract_sorter.dart';
 import 'package:sorty/sorting/algorithms/algorithm_factory.dart';
 import 'package:sorty/sorting/algorithms/mergesort.dart';
-import 'package:sorty/sorting/algorithms/quicksort.dart';
 import 'package:sorty/sorting/array_generator.dart';
 
 part 'sorter_event.dart';
@@ -29,6 +28,10 @@ class SorterBloc extends Bloc<SorterEvent, SorterState> {
 
     if (event is StartShuffle) {
       sorter.shuffle();
+    }
+
+    if (event is Reset) {
+      sorter.reset();
     }
 
     if (event is ChangeElements) {
