@@ -10,13 +10,10 @@
 
 > A Sorting Algorithms Visualizer 
 
-## THIS PROJECT IS A <u>WORK IN PROGRESS</u>
 
 ## Showcase
 
-|Quicksort (Bars Visualizer)|Quicksort (RGB Circle Visualizer)|
-|:---:|:---:|
-|![](https://i.imgur.com/VRa4NP2.gif)|![](https://i.imgur.com/vPMLmwh.gif)|
+[![Sorty Showcase](https://i.imgur.com/aSvrFjJ.png)](https://youtu.be/Gi0DsGD-lXE)
 
 ## Install
 
